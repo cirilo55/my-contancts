@@ -1,6 +1,6 @@
 import { Container, InputSearchContainer } from "./style"
 
-import Logo from '../../assets/imgs/Group.svg';
+import Logo from '../../assets/images/header.svg';
 
 export default function Header(){
     return (
