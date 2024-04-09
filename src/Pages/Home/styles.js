@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     margin-top: 32px;
+
+    strong {
+        font-weight: bolder;
+    }
 `;
 
 export const InputSearchContainer = styled.div`
@@ -28,7 +32,8 @@ export const InputSearchContainer = styled.div`
 export const Header = styled.header`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    margin-top: 32px;
 
     strong {
         color: #222;
@@ -52,7 +57,7 @@ export const Header = styled.header`
 
 `;
 
-export const ListContainer = styled.div`
+export const ListHeader = styled.div`
     margin-top: 24px;
 
     header{
@@ -70,6 +75,11 @@ export const ListContainer = styled.div`
                 font-weight: bold;
                 color: ${({ theme }) => theme.colors.primary.main}
 
+            }
+
+            img {
+                transform: ${({ orderBy }) => (orderBy === 'asc' ? 'rotate(180deg)': 'rotate(0deg)')};
+                transition: transform 0.2s ease-in;
             }
         }
     }
@@ -112,7 +122,7 @@ export const Card = styled.div`
         button{
             background: transparent;
             border: none;
-            margin-left:8px
+            margin-left: 8px
         }
     }
 `
