@@ -10,6 +10,7 @@ import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
 import sad from '../../assets/images/sad.svg';
 import emptyBox from '../../assets/images/empty-box.svg';
+import magnifierQuestion from './../../assets/images/magnifier-question.svg'
 
 import { InputSearchContainer } from './styles';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
@@ -24,18 +25,19 @@ export default function HomePage() {
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
+    console.log(contacts);
     const filteredContacts = useMemo(() => contacts.filter((contact) =>
 
         (contact.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
     ), [contacts, searchTerm]);
+    console.log(filteredContacts);
 
     const loadContacts =  useCallback(async () => {
         try {
             setIsLoading(true);
 
             let contactsList = await ContactsServices.listContacts(orderBy);
-            contactsList = [];
             setHasError(false);
             setContacts(contactsList);
         } catch (error) {
@@ -106,6 +108,13 @@ export default function HomePage() {
                     </p>
                 </EmptyListContainer>
             )}
+            {(contacts.length > 0 && filteredContacts.length < 1) && (
+                <div>
+                    <img src={magnifierQuestion} alt="Magnifier question" />
+                </div>
+            )}
+
+
 
             {filteredContacts.length > 0 && (
             <ListHeader orderby={orderBy}>
