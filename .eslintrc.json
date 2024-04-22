@@ -1,25 +1,19 @@
 {
     "parser": "@babel/eslint-parser",
     "env": {
-        "browser": true,
-        "es2021": true
+      "browser": true,
+      "es2021": true
     },
-    "extends": [
-        "plugin:react-hooks/recommended"
-    ],
+    "extends": ["plugin:react-hooks/recommended"],
     "rules": {
-        "import/no-anonymous-default-export": "off",
-        "eslint-disable-next-line": "off",
-        "import/extensions": "off"
+      "import/no-anonymous-default-export": "off",
+      "eslint-disable-next-line": "off",
+      "import/extensions": "off"
     },
     "parserOptions": {
-        "sourceType": "module",
-        "requireConfigFile": false
+      "sourceType": "module",
+      "requireConfigFile": false
     },
-    "plugins": [
-        "@babel"
-    ],
-    "presets": [
-        "@babel/preset-react"
-    ]
-}
+    "plugins": ["@babel"]
+  }
+  
