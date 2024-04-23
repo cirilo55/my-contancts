@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo, useCallback } from 'react';
 import {
     Container, Header, ListHeader,
     ListBody, Card, ErrorContainer,
-    EmptyListContainer
+    EmptyListContainer, SearchNotFoundContainer
 } from '../../Pages/Home/styles';
 
 import arrow from '../../assets/images/icons/arrow.svg'
@@ -25,7 +25,6 @@ export default function HomePage() {
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
-    console.log(contacts);
     const filteredContacts = useMemo(() => contacts.filter((contact) =>
 
         (contact.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -66,6 +65,7 @@ export default function HomePage() {
     return (
         <Container>
             <Loader isLoading={isLoading} />
+            
             {contacts.length > 0 && (
                 <InputSearchContainer>
                 <input
@@ -109,9 +109,12 @@ export default function HomePage() {
                 </EmptyListContainer>
             )}
             {(contacts.length > 0 && filteredContacts.length < 1) && (
-                <div>
+                <SearchNotFoundContainer>
                     <img src={magnifierQuestion} alt="Magnifier question" />
-                </div>
+                    <span>
+                        Nenhum resultado encontrado para <strong>"{searchTerm}"</strong>
+                    </span>
+                </SearchNotFoundContainer>
             )}
 
 

@@ -1,28 +1,57 @@
-import ApiError from '../../errors/ApiError';
+import APIError from '../../errors/ApiError';
 class HttpClient{
     constructor(baseURL) {
         this.baseURL = baseURL
 
     }
 
-    async get(path){
-        const response = await fetch(`${this.baseURL}${path}`);
+    get(path){
+        return this.makeRequest(path, {method: 'GET'});
+    }
 
-        let body = null;
+
+    post(path, options){
+        return this.makeRequest(path, {
+            method: 'POST',
+            body: options?.body,
+            headers: options?.headers
+        });
+    }
+
+    async makeRequest(path, options){
+
+        const headers = new Headers()
+        if(options.body)
+        {
+            headers.append('Content-Type', 'application/json')
+        
+        }
+        if(options.headers){
+            Object.entries(options.headers).forEach(([name, value]) =>{
+                headers.append(name, value);
+            });
+
+        }
+        const response = await fetch(`${this.baseURL}${path}`, {
+            method: options.method,
+            body: JSON.stringify(options.body),
+            headers,
+        });
+
+        let responseBody = null;
 
         const contentType = response.headers.get('Content-Type');
 
         if(contentType.includes('application/json')){
-            body = await response.json();
+            responseBody = await response.json();
         }
-        
-        //checa o da resposta , se esta entre 200 a 299;
+    
         if(response.ok){
-            return body;
+            return responseBody;
         }
     
         throw new Error(
-            body?.error || `${response.status} - ${response.statusText}`
+            responseBody?.error || `${response.status} - ${response.statusText}`
         );
     }
 
