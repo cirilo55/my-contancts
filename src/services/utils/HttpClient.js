@@ -11,6 +11,7 @@ class HttpClient{
 
 
     post(path, options){
+
         return this.makeRequest(path, {
             method: 'POST',
             body: options?.body,
@@ -19,7 +20,7 @@ class HttpClient{
     }
 
     async makeRequest(path, options){
-
+        
         const headers = new Headers()
         if(options.body)
         {
@@ -29,9 +30,9 @@ class HttpClient{
         if(options.headers){
             Object.entries(options.headers).forEach(([name, value]) =>{
                 headers.append(name, value);
-            });
-
+        });
         }
+
         const response = await fetch(`${this.baseURL}${path}`, {
             method: options.method,
             body: JSON.stringify(options.body),
@@ -45,8 +46,10 @@ class HttpClient{
         if(contentType.includes('application/json')){
             responseBody = await response.json();
         }
-    
+        console.log(responseBody)
+
         if(response.ok){
+            console.log(response)
             return responseBody;
         }
     

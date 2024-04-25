@@ -15,7 +15,6 @@ export default function NewContact()
         };
 
         const response = await ContactsServices.createContacts(contact);
-        console.log(response);
         } catch {
             alert('deu erro :( ')
         }

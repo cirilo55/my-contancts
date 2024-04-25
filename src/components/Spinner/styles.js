@@ -43,11 +43,7 @@ export const StyledSpinner = styled.div`
         width: 1em;
         height: 1em;
         border-radius: 50%;
-        margin: 72px auto;
 
-        position: absolute;
-        right: 16px;
-        top: 18px;
         
         -webkit-transform: translateZ(0);
         -ms-transform: translateZ(0);

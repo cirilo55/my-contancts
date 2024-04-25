@@ -14,8 +14,9 @@ export const Overlay = styled.div`
 
     div{
         position: absolute;
-        left: 0;
-        top: 30%
+        left: 50%;
+        transform: translate(-50%, 0);
+        
     }
 
 
