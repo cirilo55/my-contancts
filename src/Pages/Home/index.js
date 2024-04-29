@@ -30,7 +30,6 @@ export default function HomePage() {
         (contact.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
     ), [contacts, searchTerm]);
-    console.log(filteredContacts);
 
     const loadContacts =  useCallback(async () => {
         try {
@@ -76,7 +75,7 @@ export default function HomePage() {
                 </InputSearchContainer>
             )}
 
-            <Header justifyContent={(hasError ? 'flex-end': (contacts.length > 0 ? 'space-between' : 'center') )}>
+            <Header justifycontent={(hasError ? 'flex-end': (contacts.length > 0 ? 'space-between' : 'center') )}>
                 {(!hasError && contacts.length > 0) && (<strong>
                     {filteredContacts.length}
                     {filteredContacts.length === 1 ? ' contato' : ' contatos'}

@@ -46,10 +46,8 @@ class HttpClient{
         if(contentType.includes('application/json')){
             responseBody = await response.json();
         }
-        console.log(responseBody)
 
         if(response.ok){
-            console.log(response)
             return responseBody;
         }
     

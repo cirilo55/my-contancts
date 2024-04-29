@@ -32,7 +32,7 @@ export const InputSearchContainer = styled.div`
 export const Header = styled.header`
     display: flex;
     align-items: center;
-    justify-content: ${({ justifyContent }) => justifyContent};
+    justify-content: ${({ justifycontent }) => justifycontent};
     margin-top: 32px;
     padding-bottom: 16px;
     border-bottom: 2px solid ${({ theme }) => theme.colors.gray[100]};
@@ -106,12 +106,16 @@ export const Card = styled.div`
     .info{
         .contact-name{
             display:flex;
+            align-items: center;
+            margin-bottom: 4px;
+
         small{
             background: ${({ theme }) => theme.colors.primary.lighter} ;
             color: ${({ theme }) => theme.colors.primary.main} ;
             text-transform: uppercase;
             padding: 4px;
             border-radius: 2px;
+            margin-left: 4px;
         }
     }
     span{
