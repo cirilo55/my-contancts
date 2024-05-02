@@ -13,7 +13,8 @@ import emptyBox from '../../assets/images/empty-box.svg';
 import magnifierQuestion from './../../assets/images/magnifier-question.svg'
 
 import { InputSearchContainer } from './styles';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
+
 import Loader from '../../components/Loader';
 import ContactsServices from '../../services/ContactsServices';
 import Button from '../../components/Button';
@@ -150,9 +151,9 @@ export default function HomePage() {
 
 
                         <div className='actions'>
-                            <Link to={`/edit/${contact.id}`}>
+                            <a href={`/edit/${contact.id}`}>
                                 <img src={edit} alt='edit' />
-                            </Link>
+                            </a>
                             <button type='button'>
                                 <img src={trash} alt='delete' />
                             </button>
