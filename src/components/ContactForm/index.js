@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 
 import isEmailValid from '../../utils/isEmailValid';
 import useErrors from '../../hooks/useErrors';
@@ -13,9 +13,8 @@ import Select from '../Select';
 import Button from '../Button';
 
 import formatPhone from '../../utils/formatPhone';
-import Spinner from '../Spinner';
 
-export default function ContactForm({ buttonLabel, onSubmit }){
+const ContactForm = forwardRef(({ buttonLabel, onSubmit}, ref) =>{
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -26,8 +25,17 @@ export default function ContactForm({ buttonLabel, onSubmit }){
 
     const { setError , removerError, getErrorMessagerFieldName, errors } = useErrors();
 
+    const isFormValid = (name && errors.length===0);
 
-    const isFormValid = (name && errors.length===0) ;
+    useImperativeHandle(ref, () => ({
+            SetFieldValues: (contact) =>{
+                setName(contact.name);
+                setEmail(contact.email);
+                setPhone(contact.phone);
+                setCategoryId(contact.category_id)
+            },
+            
+    }), []);
     useEffect(() =>{
         async function loadCategories(){
             try{
@@ -87,6 +95,7 @@ export default function ContactForm({ buttonLabel, onSubmit }){
     }
                                                                          
     return (
+        <>
         <Form method="POST" onSubmit={handleSubmit}>
             <FormGroup error={getErrorMessagerFieldName('name')}>
                 <Input  
@@ -147,9 +156,13 @@ export default function ContactForm({ buttonLabel, onSubmit }){
                 </Button>
             </ButtonContainer>
         </Form>
+        </>
     );
-}
+})
+
 ContactForm.propTypes = {
     buttonLabel: PropTypes.string.isRequired,
     onSubmit: PropTypes.func
 }
+
+export default ContactForm

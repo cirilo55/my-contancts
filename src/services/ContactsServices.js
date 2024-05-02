@@ -6,7 +6,7 @@ class ContactsService {
     {
         this.httpClient = new HttpClient('http://localhost:3001')
     }
-    async listContacts(orderBy){
+    listContacts(orderBy){
         return this.httpClient.get(`/contacts?orderBy=${orderBy}`,{
             headers: {
     
@@ -14,7 +14,11 @@ class ContactsService {
         });
     }
 
-    async createContacts(contact){
+    getContactById(id){
+        return this.httpClient.get(`/contacts/${id}`)
+    }
+
+    createContacts(contact){
         return this.httpClient.post(`/contacts`, {body: contact})
     }
 }
