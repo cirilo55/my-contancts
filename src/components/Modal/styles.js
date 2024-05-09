@@ -24,7 +24,7 @@ export const Container = styled.div`
     border-radius: 4px;
     padding: 25px;
 
-    h1{
+    > h1{
         font-size: 22px;
         color: ${ ({theme, danger}) => (danger ? theme.colors.danger.main : theme.colors.gray[900])}
     }
@@ -47,6 +47,10 @@ export const Footer = styled.footer`
         font-size: 16px;
         margin-right: 8px;
         color: ${ ({ theme }) => theme.colors.gray[200]}
+        
+        &[disabled]{
+            cursor: default
+        }
 
     }
 `;

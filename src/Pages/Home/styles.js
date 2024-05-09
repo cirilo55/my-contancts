@@ -80,7 +80,8 @@ export const ListHeader = styled.div`
             }
 
             img {
-                transform: ${({ orderBy }) => (orderBy === 'asc' ? 'rotate(180deg)': 'rotate(0deg)')};
+                margin-left: 5px;
+                transform: ${({ orderby }) => (orderby === 'asc' ? 'rotate(180deg)': 'rotate(0deg)')};
                 transition: transform 0.2s ease-in;
             }
         }
@@ -153,7 +154,9 @@ export const ErrorContainer = styled.div`
     }
     span{
         color: red;
-        margin-bottom: 8px
+    }
+    button{
+        margin-top: 16px;
     }
 
 `

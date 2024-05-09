@@ -21,6 +21,15 @@ class ContactsService {
     createContacts(contact){
         return this.httpClient.post(`/contacts`, {body: contact})
     }
+
+    updateContact(id, contact){
+        console.log(id);
+        return this.httpClient.put(`/contacts/${id}`,  {body: contact})
+    }
+
+    deleteContact(contact){
+        return this.httpClient.delete(`/contacts/${contact.id}`)
+    }
 }
 
 export default new ContactsService();

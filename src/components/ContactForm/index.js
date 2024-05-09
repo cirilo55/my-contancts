@@ -29,11 +29,18 @@ const ContactForm = forwardRef(({ buttonLabel, onSubmit}, ref) =>{
 
     useImperativeHandle(ref, () => ({
             SetFieldValues: (contact) =>{
-                setName(contact.name);
-                setEmail(contact.email);
-                setPhone(contact.phone);
-                setCategoryId(contact.category_id)
+                setName(contact.name ?? '');
+                setEmail(contact.email ?? '');
+                setPhone(formatPhone(contact.phone) ?? '');
+                setCategoryId(contact.category_id ?? '')
             },
+
+            resetFields: () =>{
+                setName('');
+                setEmail('');
+                setPhone('');
+                setCategoryId('');
+            }
             
     }), []);
     useEffect(() =>{
@@ -42,8 +49,10 @@ const ContactForm = forwardRef(({ buttonLabel, onSubmit}, ref) =>{
             const categoriesList = await CategoriesServices.listCategories();
 
             setCategories(categoriesList)
-            setIsLoadingCategories(false)
-            } catch(err){}
+            } catch(err){} finally{
+                setIsLoadingCategories(false)
+
+            }
         }
   
 
@@ -86,10 +95,6 @@ const ContactForm = forwardRef(({ buttonLabel, onSubmit}, ref) =>{
         onSubmit({
             name, email, phone, categoryId
         });
-        setName('');
-        setEmail('');
-        setPhone('');
-        setCategoryId('');
         
         setIsSubmitting(false);
     }
