@@ -18,12 +18,11 @@ export default function EditContact()
         async function loadContact(){
             try{
                 const contactData = await ContactsServices.getContactById(id)
-                console.log(contactData);
                 contactFormRef.current.SetFieldValues(contactData);
                 setContactName(contactData.name)
                 setIsLoading(false)
             }catch{
-                //implementar a redireção api quebra ao chamar id flaso.
+                //implementar a redireção api quebra ao chamar id falso.
                 history.push('/')
                 toast({
                     type: 'danger',
