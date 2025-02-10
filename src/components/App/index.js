@@ -14,14 +14,9 @@ function App() {
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
         <ToastContainer />
-        <Container>
-          <Header />
           <BrowserRouter>
-
-          <Routes />
+            <Routes />
           </BrowserRouter>
-
-        </Container>
       </ThemeProvider>
   );
 }

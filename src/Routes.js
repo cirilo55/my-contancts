@@ -5,6 +5,8 @@ import Home from './Pages/Home';
 import NewContact from './Pages/NewContact';
 import EditContact from './Pages/EditContact';
 import NotFound from './Pages/NotFound';
+import Login from './Pages/Login';
+import { Container } from './components/App/styles';
 
 export default function Routes()
 {
@@ -16,15 +18,22 @@ export default function Routes()
     });
 
     return transitions((props, item) => (
-        <animated.div style={props}>
-            <Switch location={item}>
-                <Route exact path="/" component={Home} />
-                <Route path="/new" component={NewContact} />
-                <Route path="/edit/:id" component={EditContact} />
+        <>
+        <Container>
+            <animated.div style={props}>
+                <Switch location={item}>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/new" component={NewContact} />
+                    <Route path="/edit/:id" component={EditContact} />
 
-                <Route component={NotFound} />
-            </Switch>
-        </animated.div>
+                    {/* <Route component={NotFound} /> */}
+                </Switch>
+            </animated.div>
+        </Container>
+        <Switch>
+            <Route path="/login" component={Login} />
+        </Switch>
+        </>
     ));
 
 }
