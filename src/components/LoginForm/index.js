@@ -5,7 +5,7 @@ import isEmailValid from '../../utils/isEmailValid';
 import useErrors from '../../hooks/useErrors';
 import InputComponent from '../InputComponent';
 import { Form, ButtonContainer, ContainerFull, Title, Footer, SubTitle } from "./styles";
-import { Email, Lock } from '@material-ui/icons';
+import { Email, Lock } from '@mui/icons-material';
 
 import FormGroup from "../FormGroup";
 import Input from '../Input';
@@ -71,6 +71,8 @@ const LoginForm = forwardRef(({ buttonLabel, onSubmit}, ref) =>{
                         error={getErrorMessagerFieldName('email')}
                         maxLength="32"
                         disabled={isSubmitting}
+                        icon={Email}
+
                         />
                     </FormGroup>
                     <FormGroup>
@@ -81,6 +83,8 @@ const LoginForm = forwardRef(({ buttonLabel, onSubmit}, ref) =>{
                         maxLength="15"
                         disabled={isSubmitting}
                         type="password"
+                        icon={Lock}
+
                         />
                     </FormGroup>
 

@@ -12,6 +12,9 @@ export const InputContainer = styled.div`
   padding: 0 16px;
   transition: border-color 0.2s ease-in;
   
+  &:focus-within {
+    border-color: ${({ theme }) => theme.colors.primary.main};
+  }
 
 `;
 
@@ -19,6 +22,8 @@ export const IconWrapper = styled.div`
   margin-right: 8px;
   display: flex;
   align-items: center;
+  color: #afafaf; /* Cor cinza para o ícone */
+
 `;
 
 export const Input = styled.input`

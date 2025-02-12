@@ -10,8 +10,6 @@ export const Container = styled.div`
 
 export const InputSearchContainer = styled.div`
     width: 100%;
- 
-
 
     input {
         width: 100%;
@@ -27,10 +25,6 @@ export const InputSearchContainer = styled.div`
         &::placeholder{
             color: #BCBCBC
         }
-        &:focus {
-        
-           border: 2px solid ${({ theme }) => theme.colors.primary.main};
-        }
 
     }
 `
@@ -38,8 +32,8 @@ export const InputSearchContainer = styled.div`
 export const Header = styled.header`
     display: flex;
     align-items: center;
-    justify-content: end;
-    margin-top: 1rem;
+    justify-content: ${({ justifycontent }) => justifycontent};
+    margin-top: 32px;
     padding-bottom: 16px;
     border-bottom: 2px solid ${({ theme }) => theme.colors.gray[100]};
 
@@ -115,7 +109,6 @@ export const Card = styled.div`
             display:flex;
             align-items: center;
             margin-bottom: 4px;
-            font-size: 16px;
 
         small{
             background: ${({ theme }) => theme.colors.primary.lighter} ;
@@ -128,7 +121,7 @@ export const Card = styled.div`
     }
     span{
         display: block;
-        font-size: 12px;
+        font-size: 14px;
         color: ${({theme}) => theme.colors.gray[200]}
     }
     }

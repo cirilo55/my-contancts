@@ -3,7 +3,7 @@ import styled from 'styled-components';
 //  isso aqui faz animação de transição de rotas
 export const Container = styled.div`
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 0 16px;
 `;

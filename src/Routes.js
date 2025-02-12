@@ -12,9 +12,9 @@ export default function Routes()
 {
     const location = useLocation();
     const transitions = useTransition(location, {
-        from: { opacity: 0, transform: 'translateY(50px)', position: 'absolute', width: '500px'},
-        enter: { opacity: 1 , transform: 'translateY(0)', position: 'absolute', width: '500px'},
-        leave: { opacity: 0, transform: 'translateY(50px)', position: 'absolute', width: '500px' }
+        from: { opacity: 0, transform: 'translateY(50px)', position: 'absolute', width: '600px'},
+        enter: { opacity: 1 , transform: 'translateY(0)', position: 'absolute', width: '600px'},
+        leave: { opacity: 0, transform: 'translateY(50px)', position: 'absolute', width: '600px' }
     });
 
     return transitions((props, item) => (
