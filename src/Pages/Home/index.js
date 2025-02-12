@@ -7,6 +7,7 @@ import formatDanfe from '../../utils/fomatDanfe';
 import { InputSearchContainer, Header, ListBody, Card } from './styles';
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
+import DanfeService from '../../services/DanfeServices';
 
 export default function HomePage() {
     const [orderBy, setOrderBy] = useState('asc');
@@ -27,6 +28,18 @@ export default function HomePage() {
         setDanfe(formatDanfe(event.target.value));
     }
 
+    async function handleAddDanfe() {
+        try {
+            setIsLoading(true);
+            const response = await DanfeService.sendDanfe(danfe.replace(/\D/g, '')); // Remove caracteres não numéricos
+            console.log('Response:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
 
     return (
         <Container>
@@ -41,11 +54,9 @@ export default function HomePage() {
                 />
             </InputSearchContainer>
 
-
-            
              <Header>
              <div className="d-flex-end">
-             <Button>Adicionar Danfe</Button>
+                <Button onClick={handleAddDanfe}>Adicionar Danfe</Button>
              </div>
              </Header>
  
@@ -53,7 +64,7 @@ export default function HomePage() {
                     <Card>
                         <div className='info'>
                             <div className='contact-name'>
-                                <strong>{"5464.8978.9789.7897.8978.7897.8978.9789.7897.8978.9789"}</strong>
+                                <strong>{danfe.trim()}</strong>
                             </div>
                             <span>12/01 - 09:00</span>
                         </div>
