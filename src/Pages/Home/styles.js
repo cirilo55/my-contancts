@@ -8,6 +8,24 @@ export const Container = styled.div`
     }
 `;
 
+export const SubHeader = styled.div`
+    button{
+        background: transparent;
+        border: none;
+        margin-left: 8px;
+
+    }
+    .end{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: .25rem;
+    }
+    h1{
+        font-weight: bold;
+        font-size: 18px;
+    }
+`
+
 export const InputSearchContainer = styled.div`
     width: 100%;
  
@@ -95,6 +113,14 @@ export const ListHeader = styled.div`
 `
 export const ListBody = styled.div`
     margin-top: 24px;
+    margin-bottom: 24px;
+`
+
+export const SpinnerContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
 `
 
 export const Card = styled.div`
