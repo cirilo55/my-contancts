@@ -119,6 +119,9 @@ export default function HomePage() {
                     <img src={sad} alt='Sad' />
                     <div className='detail'>
                         <span>Ocorreu um erro ao obter as danfes!</span>
+                        <Button onClick={handleTryAgain}>
+                            Tentar Novamente
+                        </Button>
                     </div>
                 </ErrorContainer>
             )}
